@@ -8,6 +8,8 @@ class Linker
     create_symlinks
   end
 
+  private
+
   def remove_symlinks
     links.each do |link|
       print "Removing #{link.link_path}: "
