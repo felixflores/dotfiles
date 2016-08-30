@@ -15,6 +15,27 @@ class Link
     File.join Dir.pwd, files, file
   end
 
+  def current?
+    File.readlink(link_path) == file_path
+  rescue Errno::ENOENT
+  end
+
+  def not_current?
+    !current?
+  end
+
+  def exists?
+    File.exist? link_path
+  end
+
+  def remove
+    File.unlink link_path
+  end
+
+  def create
+    File.symlink file_path, link_path
+  end
+
   private
 
   def home_path

@@ -1,4 +1,5 @@
 require_relative 'link'
+require_relative 'sheller'
 
 class Linker
 
@@ -6,21 +7,32 @@ class Linker
     verify_tmp_dir
     remove_symlinks
     create_symlinks
+    update_shells
   end
 
   private
 
+  def update_shells
+    Sheller.new(dotfile_link.link_path).update_shells
+  end
+
+  def dotfile_link
+    links.find_all { |l| l.file == 'dotfiles' }.first
+  end
+
   def remove_symlinks
     links.each do |link|
-      print "Removing #{link.link_path}: "
-      if File.exist?(link.link_path)
-        if File.unlink(link.link_path)
+      print "Checking #{link.link_path}: "
+      if link.exists?
+        if link.current?
+          print 'looks good'
+        elsif link.remove
           print 'removed'
         else
           print 'error'
         end
       else
-        print 'skipped'
+        print 'not there'
       end
       print "\n"
     end
@@ -29,10 +41,14 @@ class Linker
   def create_symlinks
     links.each do |link|
       print "Linking #{link.link_path}: "
-      if File.symlink(link.file_path, link.link_path)
-        print 'linked'
+      if link.not_current?
+        if link.create
+          print 'linked'
+        else
+          print 'error'
+        end
       else
-        print 'error'
+        print 'current'
       end
       print "\n"
     end
