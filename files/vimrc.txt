@@ -1,0 +1,237 @@
+" Vim Setup for trueheart78
+" Bundles are configured in ~/.vimrc.bundles
+" Local config is setup in ~/.vimrc.local
+" Temp directory is setup as ~/.tmp (may require creating)
+""""""""""""""""""""""""""""""""""""""""""""""""
+" Vim Command to install plugins is :PlugInstall
+""""""""""""""""""""""""""""""""""""""""""""""""
+set nocompatible " We're running Vim, not Vi!
+set smartindent
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set relativenumber
+set number "after relativenumber, enables current line number
+set numberwidth=5 "left-hand padding for number gutter
+set laststatus=2 "airline support
+highlight LineNr ctermfg=yellow
+"php files get special care (cmm php)
+autocmd Filetype php setlocal tabstop=4 shiftwidth=4
+
+" Make it obvious where 80 characters is
+" highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
+" match OverLength /\%81v.\+/
+highlight ColorColumn ctermbg=yellow "set to whatever you like
+call matchadd('ColorColumn', '\%81v', 100) "set column nr
+
+" autoreload config changes :D
+augroup myvimrc
+  au!
+  au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc so $MYVIMRC | if has('gui_running') | so $MYGVIMRC | endif
+augroup END
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set norelativenumber
+    set number
+    highlight LineNr ctermfg=green
+  else
+    set nonumber
+    set relativenumber
+    set number "enables current line number
+    highlight LineNr ctermfg=yellow
+  endif
+endfunc
+
+nnoremap <c-t> :call NumberToggle()<cr>
+" enable running CoffeeScript files
+inoremap <c-c> <ESC>:!coffee %<CR>
+nnoremap <c-c> :!coffee %<CR>
+
+" disable arrow keys
+noremap  <Up> ""
+noremap! <Up> <Esc>
+noremap  <Down> ""
+noremap! <Down> <Esc>
+noremap  <Left> ""
+noremap! <Left> <Esc>
+noremap  <Right> ""
+noremap! <Right> <Esc>
+
+" Make backspace behave in a sane manner.
+set backspace=indent,eol,start
+
+if has("autocmd")
+  " Enable filetype detection
+  filetype plugin indent on
+
+  " Restore cursor position
+  autocmd BufReadPost *
+    \ if line("'\"") > 1 && line("'\"") <= line("$") |
+    \   exe "normal! g`\"" |
+    \ endif
+endif
+if &t_Co > 2 || has("gui_running")
+  " Enable syntax highlighting
+  syntax on
+endif
+
+" Ctrl+s to save
+:nmap <c-s> :w<CR>
+:imap <c-s> <Esc>:w<CR>
+
+" Ctrl+q to quit
+:nmap <c-q> :q<CR>
+:imap <c-q> <Esc>:q<CR>
+
+" ctrl+space for omni completion
+inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
+      \ "\<lt>C-n>" :
+      \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
+      \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
+      \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
+imap <C-@> <C-Space>
+" map escape button to jj
+imap jj <ESC>
+imap kk <ESC>
+
+let mapleader=","
+
+" treat .md files as markdown
+au BufNewFile,BufFilePre,BufRead *.md set filetype=markdown
+" Format xml files
+au FileType xml exe ":silent 1,$!xmllint --format --recover - 2>/dev/null"
+
+" ctrlp extension
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+
+" Alignment macros
+nmap <Leader>a= :Tabularize /=\(>\)\@!<CR>
+vmap <Leader>a= :Tabularize /=\(>\)\@!<CR>
+nmap <Leader>a> :Tabularize /=><CR>
+vmap <Leader>a> :Tabularize /=><CR>
+nmap <Leader>a: :Tabularize /:\zs<CR>
+vmap <Leader>a: :Tabularize /:\zs<CR>
+nmap <Leader>a{ :Tabularize / \zs{<CR>
+vmap <Leader>a{ :Tabularize / \zs{<CR>
+
+" auto-aligns using tabular when entering the bar character
+" source: https://gist.github.com/tpope/287147
+inoremap <silent> <Bar>   <Bar><Esc>:call <SID>align()<CR>a
+
+function! s:align()
+  let p = '^\s*|\s.*\s|\s*$'
+  if exists(':Tabularize') && getline('.') =~# '^\s*|' && (getline(line('.')-1) =~# p || getline(line('.')+1) =~# p)
+    let column = strlen(substitute(getline('.')[0:col('.')],'[^|]','','g'))
+    let position = strlen(matchstr(getline('.')[0:col('.')],'.*|\s*\zs.*'))
+    Tabularize/|/l1
+    normal! 0
+    call search(repeat('[^|]*|',column).'\s\{-\}'.repeat('.',position),'ce',line('.'))
+  endif
+endfunction
+
+" The Silver Searcher
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+
+" bind \ (backward slash) to grep shortcut -> defines an Ag command that opens
+" a 'quickfix' window
+" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
+
+nnoremap \ :Ag<SPACE>
+
+" vim-rspec mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+" tslime / vim-rspec setup
+" let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
+
+" include the matchit plugin to use % to jump between
+" def/end, class/end, do/end, etc
+runtime macros/matchit.vim
+" for extra goodness matching in ruby, get these
+" https://github.com/kana/vim-textobj-user
+" https://github.com/nelstrom/vim-textobj-rubyblock
+
+" shortcut for binding.pry
+nmap <leader>bp orequire 'pry'; binding.pry<esc>^
+vmap <leader>bp orequire 'pry'; binding.pry<esc>^
+
+" shortcut for def initialize
+nmap <leader>in odef initialize<CR><esc>
+vmap <leader>in odef initialize<CR><esc>
+nmap <leader>di odef initialize<CR><esc>
+vmap <leader>di odef initialize<CR><esc>
+
+" window jumping shortcut
+map <Leader>w <C-w>w
+set backspace=indent,eol,start " allow backspacing over everything in insert mode
+set history=500 " keep 500 lines of command line history
+set backupdir=~/.tmp
+set directory=~/.tmp " Don't clutter my dirs up with swap and tmp files
+set shiftround " When at 3 spaces and I hit >>, go to 4, not 5.
+
+" Highlight the status line
+highlight StatusLine ctermfg=blue ctermbg=yellow
+set showcmd " display incomplete commands
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test-running stuff
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+"Now using thoughtbot/vim-rspec and tpope/dispatch.
+
+let g:rspec_command = "Dispatch bin/rspec {spec}"
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" Remove trailing whitespace on save for ruby files.
+au BufWritePre *.rb :%s/\s\+$//e
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" RENAME CURRENT FILE (thanks Gary Bernhardt)
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! RenameFile()
+  let old_name = expand('%')
+  let new_name = input('New file name: ', expand('%'), 'file')
+  if new_name != '' && new_name != old_name
+    exec ':saveas ' . new_name
+    exec ':silent !rm ' . old_name
+    redraw!
+  endif
+endfunction
+map <Leader>n :call RenameFile()<cr>
+
+" Follow Rails indentation convention for 'private' tags, etc
+" let g:ruby_indent_access_modifier_style="indent"
+
+" Without this, vim breaks in the middle of words when wrapping
+autocmd FileType markdown setlocal nolist wrap lbr
+
+" Wrap the quickfix window
+autocmd FileType qf setlocal wrap linebreak
+
+map <Leader>sc :sp db/schema.rb<cr>
+
+if filereadable($HOME."/.vimrc.bundles")
+  source ~/.vimrc.bundles
+endif
+
+" Local config
+if filereadable($HOME."/.vimrc.local")
+  source ~/.vimrc.local
+endif

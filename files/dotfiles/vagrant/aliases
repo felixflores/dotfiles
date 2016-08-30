@@ -1,0 +1,26 @@
+# See shared/aliases for more sweet features
+
+alias a='ls -lrth --color'
+alias nokogiri-fix='sudo apt-get install build-essential patch ruby-dev zlib1g-dev libsqlite3-dev'
+
+# Vim (see shared/aliases for more)
+alias vz="vim ~/.bshrc"
+alias vb="vz"
+alias vzh="echo 'Use vh'"
+alias vh="vim ~/.bash_history"
+alias vv="vim ~/.vimrc"
+alias va="vim ~/dotfiles/vagrant/aliases"
+alias vf="vim ~/dotfiles/vagrant/functions"
+alias vp="vim . -p"
+alias vgem="vim Gemfile"
+alias vb="vim ~/.vimrc.bundles"
+alias vgig="vim ~/.gitignore_global"
+alias vgin="vim ~/.gitconfig-include"
+alias vga="vim ~/.gitconfig-include"
+alias vgi="wh vgig && wh vgin && wh vga"
+
+#zsh
+alias rl=". ~/.bashrc && cd . && echo 'Bash config reloaded and current dir refreshed'"
+alias ll="ls -lh"
+alias l="ll"
+alias lsa="ls -lah"

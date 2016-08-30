@@ -1,0 +1,39 @@
+[gitsh]
+  noGreeting = true
+  defaultCommand = status --short --branch && :echo
+[gitsh "color"]
+  default = cyan
+  untracked = yellow
+  modified = red
+[alias]
+  sla = log --oneline --decorate --graph --all
+  hist= log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
+  aa  = add .
+  af  = add -f
+  s   = status
+  ss  = status
+  d   = diff
+  sp  = stash pop
+  st  = stash -u
+  p   = push
+  pl  = pull
+  pp  = pull && push
+  pu  = push -u
+  pr  = pull --rebase
+  cam = commit -am
+  m   = commit -m
+  c   = commit -m
+  co  = checkout
+  cob = checkout -b
+  cof = checkout -f
+  com = checkout master
+  cm  = commit -m
+  cv  = commit -v
+  mg  = merge
+  wip = !git add -A && git commit -m 'WIP' && git push
+  ri  = rebase -i origin/master
+  rbi = ri
+  b   = branch
+  ctg = !ctags --tag-relative -Rf.git/tags --exclude=.git --languages=-javascript,sql
+  ctag= ctg
+  ctags=ctg

@@ -1,0 +1,39 @@
+# make a dir and change into it, like a sane person
+mcd () { mkdir -p $1; cd $1; }
+
+# tmux short function
+tm () { tmux new -s $1; }
+
+# git local repo user
+git_th78 () {
+  git config user.name "Josh Mills"
+  git config user.email "josh@trueheart78.com"
+}
+
+git_b () {
+  git checkout -b $1 origin/$1
+}
+
+cmmrspec () {
+  LOCAL_CMP=true TEST_ENV=$1 bundle exec rspec
+}
+
+cmmtest () {
+  LOCAL_CMP=true TEST_ENV=$1 bundle exec cifter -g 8
+}
+
+cmmclean () {
+  LOCAL_CMP=true TEST_ENV=$1 bundle exec cifter --clean
+}
+
+tmp_stats () {
+  echo "/tmp on $1 node 1"
+  ssh deployer@mit$1n1.cmmint.net "df -h /tmp"
+  echo "-----------------------------------------------"
+  echo "/tmp on $1 node 2"
+  ssh deployer@mit$1n2.cmmint.net "df -h /tmp"
+}
+
+deploy_to_test () {
+  APP_ID=$1 bundle exec cap deploy
+}
