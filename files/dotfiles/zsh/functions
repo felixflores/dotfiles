@@ -10,14 +10,6 @@ git-deploy () {
   fi
 }
 
-cpv () {
-  echo "Attempting to copy dotfiles for vagrant"
-  rm -rf ~/vagrant/dotfiles
-  cp -R ~/Dropbox/Coding/dotfiles ~/vagrant/dotfiles
-  cp /Users/jmills/Dropbox/Coding/vimrc.txt ~/vagrant/dotfiles/.vimrc
-  echo "> If this worked, reload your vagrant shell with rl <"
-}
-
 # vagrant crafting
 vagserv () {
   cd ~/vagrant
