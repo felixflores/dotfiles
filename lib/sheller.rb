@@ -54,6 +54,7 @@ class Sheller
       puts sources_to_add.join
       puts '-' * 60
       puts "Then reload your #{type} shell with 'source #{path}'"
+      puts "Note: vim requires the :PlugInstall command to be run."
     else
       puts "Reload your #{type} shell with 'rl'"
     end
