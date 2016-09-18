@@ -152,11 +152,6 @@ nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 nnoremap \ :Ag<SPACE>
 
-" vim-rspec mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
 " tslime / vim-rspec setup
 " let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'
 
@@ -235,3 +230,10 @@ endif
 if filereadable($HOME."/.vimrc.local")
   source ~/.vimrc.local
 endif
+
+" vim-test keybindings
+nmap <silent> <leader>t :TestNearest<CR>
+nmap <silent> <leader>T :TestFile<CR>
+nmap <silent> <leader>a :TestSuite<CR>
+nmap <silent> <leader>l :TestLast<CR>
+nmap <silent> <leader>g :TestVisit<CR>
