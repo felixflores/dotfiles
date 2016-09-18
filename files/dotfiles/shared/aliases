@@ -45,6 +45,9 @@ alias bu="bundle update"
 alias bc="bundle clean"
 alias gi="gem install"
 alias r="rails"
+alias rollback="bundle exec rails db:rollback && bundle exec rails db:rollback RAILS_ENV=test"
+alias migrate="bundle exec rails db:migrate && bundle exec rails db:migrate RAILS_ENV=test"
+
 # Git
 alias gsh="gitsh"
 alias ga="git add"

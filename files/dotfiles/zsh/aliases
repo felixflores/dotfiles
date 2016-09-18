@@ -9,6 +9,7 @@ platform=`uname`
 if [[ $platform == 'Linux' ]]; then
   alias a='ls -lrth --color'
   alias nokogiri-fix='sudo apt-get install build-essential patch ruby-dev zlib1g-dev libsqlite3-dev'
+  alias empty-trash='rm -rf ~/.local/share/Trash/*'
 elif [[ $platform == 'Darwin' ]]; then
   alias a='ls -lrthG'
   alias vc='cd ~/vagrant/code/'
