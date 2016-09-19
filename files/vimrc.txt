@@ -21,7 +21,7 @@ autocmd Filetype php setlocal tabstop=4 shiftwidth=4
 " Make it obvious where 80 characters is
 " highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
 " match OverLength /\%81v.\+/
-highlight ColorColumn ctermbg=yellow "set to whatever you like
+highlight ColorColumn ctermbg=yellow " set to whatever you like
 call matchadd('ColorColumn', '\%81v', 100) "set column nr
 
 " autoreload config changes :D
@@ -84,14 +84,7 @@ endif
 :nmap <c-q> :q<CR>
 :imap <c-q> <Esc>:q<CR>
 
-" ctrl+space for omni completion
-inoremap <expr> <C-Space> pumvisible() \|\| &omnifunc == '' ?
-      \ "\<lt>C-n>" :
-      \ "\<lt>C-x>\<lt>C-o><c-r>=pumvisible() ?" .
-      \ "\"\\<lt>c-n>\\<lt>c-p>\\<lt>c-n>\" :" .
-      \ "\" \\<lt>bs>\\<lt>C-n>\"\<CR>"
-imap <C-@> <C-Space>
-" map escape button to jj
+" map escape button to jj & kk
 imap jj <ESC>
 imap kk <ESC>
 
@@ -185,14 +178,6 @@ highlight StatusLine ctermfg=blue ctermbg=yellow
 set showcmd " display incomplete commands
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Test-running stuff
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-"Now using thoughtbot/vim-rspec and tpope/dispatch.
-
-let g:rspec_command = "Dispatch bin/rspec {spec}"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " Remove trailing whitespace on save for ruby files.
 au BufWritePre *.rb :%s/\s\+$//e
@@ -231,7 +216,10 @@ if filereadable($HOME."/.vimrc.local")
   source ~/.vimrc.local
 endif
 
-" vim-test keybindings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Test-running items :: vim-test keybindings
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 nmap <silent> <leader>t :TestNearest<CR>
 nmap <silent> <leader>T :TestFile<CR>
 nmap <silent> <leader>a :TestSuite<CR>
