@@ -1,8 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =6
-let g:netrw_dirhist_1='/Users/jmills/source/cmm_tests'
-let g:netrw_dirhist_2='/Users/jmills/ruby/caring-for-karen-sue-sinatra-2014/test/unit'
-let g:netrw_dirhist_3='/Users/jmills/book-notes/practical-object-oriented-design-in-ruby'
-let g:netrw_dirhist_4='/Users/jmills/book-notes/seven-db-in-seven-weeks'
-let g:netrw_dirhist_5='/Users/jmills/book-notes/working-with-ruby-threads'
-let g:netrw_dirhist_6='/Users/jmills/book-notes/working-with-unix-processes'
