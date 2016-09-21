@@ -104,6 +104,7 @@ alias reload="rl && tmrl && echo 'Short command is [rl]'"
 alias rk="rl"
 alias tmrl="tmux source-file ~/.tmux.conf"
 alias hl="history 200 | awk '{a[\$2]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
+alias vhl="awk '/Command Line History/{p=1}/^ *$/{p=0}p' ~/.viminfo | awk '{a[\$1]++}END{for(i in a){print a[i] \" \" i}}' | sort -rn | head"
 
 # Misc
 alias suu="sudo apt-get update && sudo apt-get upgrade"
