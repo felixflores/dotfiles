@@ -241,3 +241,30 @@ function! s:ExecuteInShell(command)
   echo 'Shell command ' . command . ' executed.'
 endfunction
 command! -complete=shellcmd -nargs=+ Shell call s:ExecuteInShell(<q-args>)
+
+" Toggle whether vim will auto-indent pasted content
+function! PasteToggle()
+  if(&paste == 1)
+    set nopaste
+  else
+    set paste
+  endif
+endfunc
+
+nnoremap <c-i> :call PasteToggle()<cr>
+
+" shortcut for ```
+nmap <leader>[ o```<CR><esc>
+vmap <leader>[ o```<CR><esc>
+
+" shortcut for ```ruby
+nmap <leader>] o```ruby<CR><esc>
+vmap <leader>] o```ruby<CR><esc>
+
+" shortcut for ```<CR>```
+nmap <leader>[] o```<CR><CR>```<CR><esc>2k
+vmap <leader>[] o```<CR><CR>```<CR><esc>2k
+
+" shortcut for ```ruby<CR>```
+nmap <leader>[]r o```ruby<CR><CR>```<CR><esc>2k
+vmap <leader>[]r o```ruby<CR><CR>```<CR><esc>2k
