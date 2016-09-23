@@ -254,17 +254,17 @@ endfunc
 nnoremap <c-i> :call PasteToggle()<cr>
 
 " shortcut for ```
-nmap <leader>[ o```<CR><esc>
-vmap <leader>[ o```<CR><esc>
+nmap <leader>[ o```<CR><esc>i
+vmap <leader>[ o```<CR><esc>i
 
 " shortcut for ```ruby
-nmap <leader>] o```ruby<CR><esc>
-vmap <leader>] o```ruby<CR><esc>
+nmap <leader>] o```ruby<CR><esc>i
+vmap <leader>] o```ruby<CR><esc>i
 
 " shortcut for ```<CR>```
-nmap <leader>[] o```<CR><CR>```<CR><esc>2k
-vmap <leader>[] o```<CR><CR>```<CR><esc>2k
+nmap <leader>[] o```<CR><CR>```<CR><esc>2ki
+vmap <leader>[] o```<CR><CR>```<CR><esc>2ki
 
 " shortcut for ```ruby<CR>```
-nmap <leader>[]r o```ruby<CR><CR>```<CR><esc>2k
-vmap <leader>[]r o```ruby<CR><CR>```<CR><esc>2k
+nmap <leader>[]r o```ruby<CR><CR>```<CR><esc>2ki
+vmap <leader>[]r o```ruby<CR><CR>```<CR><esc>2ki
