@@ -165,6 +165,12 @@ vmap <leader>in odef initialize<CR><esc>
 nmap <leader>di odef initialize<CR><esc>
 vmap <leader>di odef initialize<CR><esc>
 
+" shortcut for frozen_string_literal 
+nmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
+vmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
+nmap <leader>fsl i# frozen_string_literal: true<esc>o<esc>x
+vmap <leader>fsl i# frozen_string_literal: true<esc>o<esc>x
+
 " window jumping shortcut
 map <Leader>w <C-w>w
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
