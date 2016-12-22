@@ -1,8 +1,42 @@
-# See shared/aliases for more sweet features
+# Vim (see shared/aliases for more sweetness)
+alias v\?="echo 'vza, vzf = zsh-based aliases and functions [va, vf]' && echo 'vsa, vsf = shared aliases and functions' && echo 'vva, vvf = vagrant-based aliases and functions'"
+alias vsa="vim ~/.dotfiles/shared/aliases"
+alias vsf="vim ~/.dotfiles/shared/functions"
+alias vza="vim ~/.dotfiles/zsh/aliases"
+alias vzf="vim ~/.dotfiles/zsh/functions"
+alias va="vza"
+alias vf="vzf"
+alias vva="vim ~/.dotfiles/vagrant/aliases"
+alias vvf="vim ~/.dotfiles/vagrant/functions"
+alias vz="vim ~/.zshrc"
+alias vzh="vh"
+alias vh="vim ~/.zsh_history"
+alias vv="vim ~/.vimrc"
+alias vp="vim . -p"
+alias vgem="vim Gemfile"
+alias vb="vim ~/.vimrc.bundles"
+alias vgig="vim ~/.gitignore_global"
+alias vgin="vim ~/.gitconfig-include"
+alias vga="vim ~/.gitconfig-include"
+alias vgi="wh vgig && wh vgin && wh vga"
+alias vt="vim ~/.tmux.conf"
 
 # self notes
 alias vn='vim ~/Dropbox/covermymeds/self-notes-2016.md'
 alias sn='vn'
+
+#thefuck : https://github.com/nvbn/thefuck
+alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+alias o='fuck'
+
+# Elixir
+alias imix="iex -S mix"
+
+#zsh
+alias rl=". ~/.zshrc && cd . && echo 'ZSH config reloaded and current dir refreshed'"
+
+#tmux
+alias newscreen="tmuc"
 
 # Handle the fact that this file will be used with multiple OSs
 platform=`uname`
@@ -15,8 +49,8 @@ elif [[ $platform == 'Darwin' ]]; then
   alias vc='cd ~/vagrant/code/'
   alias cv='vc'
   alias vup='cd ~/vagrant/ && vagrant up'
-  alias vs='cd ~/vagrant/ && vagrant up && vagrant ssh'
-  alias vssh="echo 'Please use vs in the future' && vs"
+  alias vss='cd ~/vagrant/ && vagrant up && vagrant ssh'
+  alias vssh="echo 'Please use vss in the future' && vss"
   alias formcon="vagrant ssh -c 'cd /vagrant/code/forms-api && bundle exec rails console'"
   alias dns_cache_clear='sudo killall -HUP mDNSResponder'
   alias clear_dns='dns_cache_clear'
@@ -30,40 +64,3 @@ elif [[ $platform == 'Darwin' ]]; then
   alias log-integration="be cap integration log"
   alias log-production="be cap production log"
 fi
-
-#thefuck : https://github.com/nvbn/thefuck
-alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
-alias o='fuck'
-
-# SSH
-alias th78="ssh -o PubkeyAuthentication=no th78@th78.me"
-alias th782="ssh -o PubkeyAuthentication=no th78@rpi2"
-
-# Vim (see shared/aliases for more)
-alias vz="vim ~/.zshrc"
-alias vzh="echo 'Use vh'"
-alias vh="vim ~/.zsh_history"
-alias vv="vim ~/.vimrc"
-alias va="vim ~/.dotfiles/zsh/aliases"
-alias vf="vim ~/.dotfiles/zsh/functions"
-alias vva="vim ~/.dotfiles/vagrant/aliases"
-alias vvf="vim ~/.dotfiles/vagrant/functions"
-alias vsa="vim ~/.dotfiles/shared/aliases"
-alias vsf="vim ~/.dotfiles/shared/functions"
-alias vp="vim . -p"
-alias vgem="vim Gemfile"
-alias vb="vim ~/.vimrc.bundles"
-alias vgig="vim ~/.gitignore_global"
-alias vgin="vim ~/.gitconfig-include"
-alias vga="vim ~/.gitconfig-include"
-alias vgi="wh vgig && wh vgin && wh vga"
-alias vt="vim ~/.tmux.conf"
-
-# Elixir
-alias imix="iex -S mix"
-
-#zsh
-alias rl=". ~/.zshrc && cd . && echo 'ZSH config reloaded and current dir refreshed'"
-
-#tmux
-alias newscreen="tmuc"
