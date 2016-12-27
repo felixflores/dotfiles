@@ -3,6 +3,11 @@ alias sizes="du -sm * | sort -nr | more"
 
 # Bundler
 
+## Default Gems
+alias gem-defaults="gem install bundler pry pry-doc interactive_editor rake rails_12factor"
+alias install-gem-defaults="gem-defaults"
+alias install-default-gems="gem-defaults"
+
 ## Super Frequent
 alias s="be rspec"
 alias r="be rails"
