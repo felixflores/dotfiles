@@ -83,6 +83,7 @@ class Linker
       'gitconfig-include.txt' => '.gitconfig-include',
       'gitshrc.txt' => '.gitshrc',
       'irbrc.txt' => '.irbrc',
+      'pryrc.txt' => '.pryrc',
       'tmux.conf' => '.tmux.conf',
       'vim' => '.vim',
       'vimrc.txt' => '.vimrc',
