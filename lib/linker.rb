@@ -1,11 +1,12 @@
 require_relative 'link'
 require_relative 'sheller'
+require 'yaml'
 
 class Linker
 
   def run
     verify_tmp_dir
-    remove_symlinks
+    audit_existing_symlinks
     create_symlinks
     update_shells
   end
@@ -20,7 +21,7 @@ class Linker
     links.find_all { |l| l.file == 'dotfiles' }.first
   end
 
-  def remove_symlinks
+  def audit_existing_symlinks
     links.each do |link|
       print "Checking #{link.link_path}: "
       if link.exists?
@@ -72,23 +73,10 @@ class Linker
 
   def links
     return @links if @links
-    @links = assignment_map.map { |(k,v)| Link.new k, v }
+    @links = assignment_map.map { |f| Link.new f[:link_from], f[:link_to] }
   end
 
   def assignment_map
-    # TODO: update to load from the config.yml file
-    {
-      'dotfiles' => '.dotfiles',
-      'gemrc.txt' => '.gemrc',
-      'gitignore.txt' => '.gitignore_global',
-      'gitconfig-include.txt' => '.gitconfig-include',
-      'gitshrc.txt' => '.gitshrc',
-      'irbrc.txt' => '.irbrc',
-      'pryrc.txt' => '.pryrc',
-      'tmux.conf' => '.tmux.conf',
-      'vim' => '.vim',
-      'vimrc.txt' => '.vimrc',
-      'vimrc.bundles.txt' => '.vimrc.bundles'
-    }
+    @assignment_map ||= YAML.load_file('config.yml')[:assignment_map]
   end
 end

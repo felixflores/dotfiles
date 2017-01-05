@@ -11,7 +11,7 @@
   -
     :description: Global .gitignore configuration 
     :link_from: gitignore.txt
-    :link_to: .gitignore_global.txt
+    :link_to: .gitignore_global
   -
     :description: Global git configuration, auto-included by git
     :link_from: gitconfig-include.txt
