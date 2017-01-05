@@ -76,10 +76,11 @@ class Linker
   end
 
   def assignment_map
+    # TODO: update to load from the config.yml file
     {
       'dotfiles' => '.dotfiles',
       'gemrc.txt' => '.gemrc',
-      'global_gitignore.txt' => '.gitignore_global',
+      'gitignore.txt' => '.gitignore_global',
       'gitconfig-include.txt' => '.gitconfig-include',
       'gitshrc.txt' => '.gitshrc',
       'irbrc.txt' => '.irbrc',
