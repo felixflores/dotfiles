@@ -1,10 +1,5 @@
-[gitsh]
-  noGreeting = true
-  defaultCommand = status --short --branch && :echo
-[gitsh "color"]
-  default = cyan
-  untracked = yellow
-  modified = red
+[push]
+  default = matching
 [alias]
   sla = log --oneline --decorate --graph --all
   hist= log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
@@ -37,3 +32,10 @@
   ctg = !ctags --tag-relative -Rf.git/tags --exclude=.git --languages=-javascript,sql
   ctag= ctg
   ctags=ctg
+[gitsh]
+  noGreeting = true
+  defaultCommand = status --short --branch && :echo
+[gitsh "color"]
+  default = cyan
+  untracked = yellow
+  modified = red
