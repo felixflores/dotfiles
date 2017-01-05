@@ -270,3 +270,11 @@ vmap <leader>] o```<CR><CR>```<CR><esc>2ki
 " shortcut for ```ruby<CR>```
 nmap <leader>]r o```ruby<CR><CR>```<CR><esc>2ki
 vmap <leader>]r o```ruby<CR><CR>```<CR><esc>2ki
+
+" shortcut for :tabe and :tabnew to cut down on misstype
+cabbrev t tabnew
+cabbrev Tabe tabnew
+
+" make life easier by remapping ; to : for commands
+nnoremap ; :
+vnoremap ; :
