@@ -150,14 +150,16 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" bind K to grep word under cursor
-nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" bind F to grep word under cursor
+nnoremap F :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 
 " bind \ (backward slash) to grep shortcut -> defines an Ag command that opens
 " a 'quickfix' window
-" command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
-
+command! -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap \ :Ag<SPACE>
+
+" bind ra to running rubocop -a
+nmap <Leader>ra :RuboCop -a<CR>
 
 " tslime / vim-rspec setup
 " let g:rspec_command = 'call Send_to_Tmux("rspec {spec}\n")'

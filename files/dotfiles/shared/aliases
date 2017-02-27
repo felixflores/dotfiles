@@ -66,6 +66,7 @@ alias dbcreate="bundle exec rake db:migrate && bundle exec rake db:migrate RAILS
 alias dbmigrate="dbcreate && bundle exec rake db:migrate && bundle exec rake db:migrate RAILS_ENV=test"
 
 # Git
+alias gut="git"
 alias gsh="gitsh"
 alias ga="git add"
 alias gaa="git add -A"
@@ -96,8 +97,9 @@ alias gcob="git checkout -b"
 alias gcof="git checkout -f"
 alias gcom="git checkout master"
 alias gcm="gm"
-alias gundo="git reset --soft HEAD~1"
+alias git-undo="git reset --soft HEAD~1"
 alias git-rollback="git reset --soft HEAD~1"
+alias git-unstage="git reset"
 alias gcv="git commit -v"
 alias gmg="git merge"
 alias gwip="git add -A && git commit -m 'WIP' && git push"
