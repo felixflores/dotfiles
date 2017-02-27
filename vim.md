@@ -72,6 +72,6 @@ Thanks to the Vim Fugitive plugin
 + `Git [command]` to run a git command.
 + `Git! [command]` to run a git command and view its output.
 
-### Misc
+## Misc
 
 + `q` to close the quick window.
