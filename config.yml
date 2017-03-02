@@ -44,3 +44,7 @@
     :description: Vim bundle configuration
     :link_from: vimrc.bundles.txt
     :link_to: .vimrc.bundles
+  -
+    :description: Zsh th78 theme
+    :link_from: zsh_themes/th78.zsh-theme
+    :link_to: .oh-my-zsh/themes/th78.zsh-theme
