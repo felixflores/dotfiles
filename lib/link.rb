@@ -1,10 +1,11 @@
 class Link
   attr_reader :file, :link, :files
 
-  def initialize(file, link)
+  def initialize(file, link, optional)
     @files = 'files'
     @file = file
     @link = link
+    @optional = optional
   end
 
   def link_path
@@ -13,6 +14,10 @@ class Link
 
   def file_path
     File.join Dir.pwd, files, file
+  end
+
+  def optional?
+    @optional
   end
 
   def current?
@@ -34,6 +39,10 @@ class Link
 
   def create
     File.symlink file_path, link_path
+  end
+
+  def creatable?
+    File.directory? File.dirname(link_path)
   end
 
   private

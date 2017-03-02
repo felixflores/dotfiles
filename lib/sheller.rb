@@ -25,7 +25,7 @@ class Sheller
   end
 
   def sources(type)
-    sources = %w(zsh/aliases zsh/functions) if type == 'zsh'
+    sources = %w(zsh/config zsh/aliases zsh/functions) if type == 'zsh'
     sources = %w(vagrant/aliases vagrant/functions) if type == 'bash'
     sources.concat %w(shared/aliases shared/functions)
     sources.map { |s| "source #{File.join(dotfile_path, s)}\n" }

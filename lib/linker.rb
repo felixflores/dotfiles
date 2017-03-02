@@ -73,7 +73,7 @@ class Linker
 
   def links
     return @links if @links
-    @links = assignment_map.map { |f| Link.new f[:link_from], f[:link_to] }
+    @links = assignment_map.map { |f| Link.new f[:link_from], f[:link_to], f.fetch(:optional, false) }
   end
 
   def assignment_map
