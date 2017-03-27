@@ -75,3 +75,8 @@ bower_components/**
 # Debugger History #
 ####################
 .byebug_history
+
+# Custom Test Runner #
+######################
+test-runner.rb
+test_results.txt
