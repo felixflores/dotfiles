@@ -4,9 +4,8 @@ alias sizes="du -sm * | sort -nr | more"
 # Bundler
 
 ## Default Gems
-alias gem-defaults="gem install bundler pry pry-doc interactive_editor rake rails_12factor byebug rubocop bundler-audit"
-alias install-gem-defaults="gem-defaults"
-alias install-default-gems="gem-defaults"
+alias install-gem-defaults-cmm="gem install bundler:1.10.6 pry pry-doc interactive_editor rake rails_12factor byebug rubocop bundler-audit"
+alias install-gem-defaults-personal="gem install bundler pry pry-doc interactive_editor rake rails_12factor byebug rubocop bundler-audit"
 
 ## Super Frequent
 alias s="be rspec"
