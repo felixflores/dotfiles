@@ -4,6 +4,18 @@ mcd () { mkdir -p $1; cd $1; }
 # tmux short function
 tm () { tmux new -s $1; }
 
+# git super command
+# make sure with zsh that the git plugin is not used
+# as it will override this command
+g () {
+  if [[ $# -gt 0 ]]
+    then
+      git "$@"
+    else
+      git status
+  fi
+}
+
 # git local repo user
 git_th78 () {
   git config user.name "Josh Mills"
