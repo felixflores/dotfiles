@@ -120,6 +120,7 @@ alias eit="exit"
 alias ex="exit"
 alias e="exit"
 alias q="exit"
+alias :q="exit"
 
 #shell config
 alias reload="rl && tmrl && echo 'Short command is [rl]'"
