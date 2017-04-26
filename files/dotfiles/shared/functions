@@ -16,6 +16,16 @@ g () {
   fi
 }
 
+# makes remembering system links easier
+lns () {
+  if [ $# -eq 2 ]
+    then
+      ln -s "$@"
+    else
+      echo "lns [existing-path] [non-existent-path]"
+  fi
+}
+
 # git local repo user
 git_th78 () {
   git config user.name "Josh Mills"

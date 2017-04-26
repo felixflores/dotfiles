@@ -275,6 +275,14 @@ endfunc
 
 nnoremap <c-i> :call PasteToggle()<cr>
 
+" shortcut to replace '[ ]' with '[x]'
+nmap <leader>x :%s/\[\ \]/\[x\]/g<CR>
+vmap <leader>x :%s/\[\ \]/\[x\]/g<CR>
+
+" shortcut to replace double quotes with single quotes
+nmap <leader>qq :%s/"/'/gc<CR>
+vmap <leader>qq :%s/"/'/gc<CR>
+
 " shortcut for ```
 nmap <leader>[ o```<CR><esc>i
 vmap <leader>[ o```<CR><esc>i

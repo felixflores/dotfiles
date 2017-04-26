@@ -109,7 +109,7 @@ alias gctags="gctag"
 alias deploy-heroku="git-deploy heroku"
 
 #vim
-alias vo="vim -o"
+alias vo="vim -O"
 alias v="vim"
 alias vi="vim"
 
