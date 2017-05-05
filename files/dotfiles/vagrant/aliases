@@ -27,3 +27,4 @@ alias lsa="ls -lah"
 
 # passenger
 alias restart-rails-app="sudo passenger-config restart-app"
+alias restart-all-rails-apps="sudo passenger-config restart-app /"
