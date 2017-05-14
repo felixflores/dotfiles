@@ -41,6 +41,8 @@ Plug 'baroldgene/vim-github-links'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'janko-m/vim-test'
 Plug 'ngmy/vim-rubocop'
+" Elm support
+Plug 'elmcast/elm-vim'
 
 if filereadable(expand("~/.vimrc.bundles.local"))
   source ~/.vimrc.bundles.local
