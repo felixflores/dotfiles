@@ -46,7 +46,7 @@ class Linker
         if link.create
           print 'linked'
         else
-          print 'error'
+          print link.error
         end
       else
         print 'current'

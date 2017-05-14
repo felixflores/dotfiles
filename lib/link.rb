@@ -1,5 +1,7 @@
 class Link
-  attr_reader :file, :link, :files
+  attr_reader :file, :link, :files, :error
+
+  class LinkNotCreatedError < StandardError; end
 
   def initialize(file, link, optional)
     @files = 'files'
@@ -38,7 +40,16 @@ class Link
   end
 
   def create
-    File.symlink file_path, link_path
+    if creatable?
+      symlink!
+      return true
+    elsif optional?
+      @error = 'skipped (optional)'
+    else
+      @error = 'error'
+      raise LinkNotCreatedError
+    end
+    false
   end
 
   def creatable?
@@ -46,6 +57,13 @@ class Link
   end
 
   private
+
+  def symlink!
+    File.symlink file_path, link_path
+  rescue Errno::ENOENT => e
+    @error = :error
+    raise e
+  end
 
   def home_path
     File.expand_path '~'
