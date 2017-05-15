@@ -22,7 +22,7 @@ alias vgi="wh vgig && wh vgin && wh vga"
 alias vt="vim ~/.tmux.conf"
 
 # self notes
-alias vn='vim ~/Dropbox/covermymeds/self-notes-2016.md'
+alias vn='vim ~/Dropbox/covermymeds/self-notes-2017.md'
 alias sn='vn'
 
 #thefuck : https://github.com/nvbn/thefuck
@@ -31,6 +31,13 @@ alias o='fuck'
 
 # Elixir
 alias imix="iex -S mix"
+
+# Elm
+alias el="elm"
+alias erb="elm repl"
+alias ef="elm format"
+alias et="elm test"
+alias elv="elm live"
 
 #zsh
 alias rl=". ~/.zshrc && cd . && echo 'ZSH config reloaded and current dir refreshed'"
