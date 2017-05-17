@@ -9,6 +9,7 @@ alias install-gem-defaults-personal="gem install bundler pry pry-doc interactive
 
 ## Super Frequent
 alias s="be rspec"
+alias sd="be rspec --format documentation"
 alias r="be rails"
 alias rr="be rake routes"
 alias rs="be rails server -p 3000"
