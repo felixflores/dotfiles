@@ -15,8 +15,9 @@ set number "after relativenumber, enables current line number
 set numberwidth=5 "left-hand padding for number gutter
 set laststatus=2 "airline support
 highlight LineNr ctermfg=yellow
-"php files get special care (cmm php)
+"php and elm files get special care (cmm php)
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4
+autocmd Filetype elm setlocal tabstop=4 shiftwidth=4
 
 " Make it obvious where 80 characters is
 " highlight OverLength ctermbg=yellow ctermfg=white guibg=#592929
