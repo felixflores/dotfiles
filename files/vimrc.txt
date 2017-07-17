@@ -303,3 +303,6 @@ cabbrev Tabe tabnew
 " make life easier by remapping ; to : for commands
 nnoremap ; :
 vnoremap ; :
+
+" elm support
+let g:elm_format_autosave = 1
