@@ -41,6 +41,7 @@ Plug 'baroldgene/vim-github-links'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'janko-m/vim-test'
 Plug 'ngmy/vim-rubocop'
+Plug 'git://github.com/AndrewRadev/splitjoin.vim.git'
 " Elm support
 Plug 'elmcast/elm-vim'
 
