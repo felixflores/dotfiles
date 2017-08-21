@@ -62,6 +62,7 @@ let ruby_blocks = {
 for [shortcut, block_type] in items(ruby_blocks)
   exe "nmap \<leader>" . shortcut . " \<esc>:call RubyBlock('" . block_type . "')\<cr>"
   exe "vmap \<leader>" . shortcut . " \<esc>:call RubyBlock('" . block_type . "')\<cr>"
+  exe "imap \<leader>" . shortcut . " \<esc>:call RubyBlock('" . block_type . "')\<cr>"
 endfor
 
 " shortcut for binding.pry
