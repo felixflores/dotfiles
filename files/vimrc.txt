@@ -15,6 +15,7 @@ set number "after relativenumber, enables current line number
 set numberwidth=5 "left-hand padding for number gutter
 set laststatus=2 "airline support
 highlight LineNr ctermfg=yellow
+
 "php and elm files get special care (cmm php)
 autocmd Filetype php setlocal tabstop=4 shiftwidth=4
 autocmd Filetype elm setlocal tabstop=4 shiftwidth=4
@@ -172,22 +173,6 @@ runtime macros/matchit.vim
 " https://github.com/kana/vim-textobj-user
 " https://github.com/nelstrom/vim-textobj-rubyblock
 
-" shortcut for binding.pry
-nmap <leader>bp orequire 'pry'; binding.pry<esc>^
-vmap <leader>bp orequire 'pry'; binding.pry<esc>^
-
-" shortcut for def initialize
-nmap <leader>in odef initialize<CR><esc>
-vmap <leader>in odef initialize<CR><esc>
-nmap <leader>di odef initialize<CR><esc>
-vmap <leader>di odef initialize<CR><esc>
-
-" shortcut for frozen_string_literal 
-nmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
-vmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
-nmap <leader>fsl i# frozen_string_literal: true<esc>o<esc>x
-vmap <leader>fsl i# frozen_string_literal: true<esc>o<esc>x
-
 " window jumping shortcut
 map <Leader>w <C-w>w
 set backspace=indent,eol,start " allow backspacing over everything in insert mode
@@ -229,15 +214,6 @@ autocmd FileType markdown setlocal nolist wrap lbr
 autocmd FileType qf setlocal wrap linebreak
 
 map <Leader>sc :sp db/schema.rb<cr>
-
-if filereadable($HOME."/.vimrc.bundles")
-  source ~/.vimrc.bundles
-endif
-
-" Local config
-if filereadable($HOME."/.vimrc.local")
-  source ~/.vimrc.local
-endif
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Test-running items :: vim-test keybindings
@@ -284,18 +260,6 @@ vmap <leader>x :%s/\[\ \]/\[x\]/g<CR>
 nmap <leader>qq :%s/"/'/gc<CR>
 vmap <leader>qq :%s/"/'/gc<CR>
 
-" shortcut for ```
-nmap <leader>[ o```<CR><esc>i
-vmap <leader>[ o```<CR><esc>i
-
-" shortcut for ```<CR>```
-nmap <leader>] o```<CR><CR>```<CR><esc>2ki
-vmap <leader>] o```<CR><CR>```<CR><esc>2ki
-
-" shortcut for ```ruby<CR>```
-nmap <leader>]r o```ruby<CR><CR>```<CR><esc>2ki
-vmap <leader>]r o```ruby<CR><CR>```<CR><esc>2ki
-
 " shortcut for :tabe and :tabnew to cut down on misstype
 cabbrev t tabnew
 cabbrev Tabe tabnew
@@ -306,3 +270,17 @@ vnoremap ; :
 
 " elm support
 let g:elm_format_autosave = 1
+
+if filereadable($HOME."/.vimrc.bundles")
+  source ~/.vimrc.bundles
+endif
+
+" Local config
+if filereadable($HOME."/.vimrc.local")
+  source ~/.vimrc.local
+endif
+
+" Load all macros
+for f in split(glob('~/.vim/macros/*.vim'), '\n')
+  exe 'source' f
+endfor
