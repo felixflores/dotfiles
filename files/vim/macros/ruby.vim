@@ -1,5 +1,4 @@
 " macros for ruby-based usage in vim
-let g:indent = "\<space>"
 
 " for class, module, and method definition
 function RubyDefBlock(block, name)
