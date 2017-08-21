@@ -1,7 +1,7 @@
 " macros for ruby-based usage in vim
 let g:indent = "\<space>"
 
-" forclass, module, and method definition
+" for class, module, and method definition
 function RubyDefBlock(block, name)
   exe 'normal! i' . a:block . ' ' . a:name . "\<cr>\<cr>end\<esc>ki#\<esc>k3==jwcw"
 endfunction
