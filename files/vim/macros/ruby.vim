@@ -66,14 +66,14 @@ for [shortcut, block_type] in items(ruby_blocks)
 endfor
 
 " shortcut for binding.pry
-nmap <leader>pry ibinding.pry<esc>^
-vmap <leader>pry ibinding.pry<esc>^
-imap <leader>pry binding.pry<esc>^
+nmap <leader>pry ibinding.pry<esc>==^
+vmap <leader>pry ibinding.pry<esc>==^
+imap <leader>pry binding.pry<esc>==^
 
 " shortcut for byebug
-nmap <leader>bye ibyebug<esc>^
-vmap <leader>bye ibyebug<esc>^
-imap <leader>bye byebug<esc>^
+nmap <leader>bye ibyebug<esc>==^
+vmap <leader>bye ibyebug<esc>==^
+imap <leader>bye byebug<esc>==^
 
 " shortcut for frozen_string_literal 
 nmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
