@@ -49,7 +49,7 @@ endfunction
 let ruby_blocks = {
       \'cls': 'class', 
       \'mod': 'module',
-      \'def': 'def',
+      \'de' : 'def',
       \'di' : 'def-init',
       \'rsp': 'rspec',
       \'rsm': 'rspec-model',
@@ -66,11 +66,19 @@ for [shortcut, block_type] in items(ruby_blocks)
 endfor
 
 " shortcut for binding.pry
-nmap <leader>bp orequire 'pry'; binding.pry<esc>^
-vmap <leader>bp orequire 'pry'; binding.pry<esc>^
+nmap <leader>pry ibinding.pry<esc>^
+vmap <leader>pry ibinding.pry<esc>^
+imap <leader>pry binding.pry<esc>^
+
+" shortcut for byebug
+nmap <leader>bye ibyebug<esc>^
+vmap <leader>bye ibyebug<esc>^
+imap <leader>bye byebug<esc>^
 
 " shortcut for frozen_string_literal 
 nmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
 vmap <leader>frz i# frozen_string_literal: true<esc>o<esc>x
+imap <leader>frz # frozen_string_literal: true<esc>o<esc>x
 nmap <leader>fsl i# frozen_string_literal: true<esc>o<esc>x
 vmap <leader>fsl i# frozen_string_literal: true<esc>o<esc>x
+imap <leader>fsl # frozen_string_literal: true<esc>o<esc>x

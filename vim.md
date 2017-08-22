@@ -1,6 +1,6 @@
 # Vim Customization
 
-_Last updated on February 27th, 2017_
+_Last updated on August 22nd, 2017_
 
 ## Editing
 
@@ -33,6 +33,33 @@ _Last updated on February 27th, 2017_
 + `F` to find current word in files.
 
 ## Ruby Tools
+
+### Debugging
+
++ `<L> + bye` = `byebug`
++ `<L> + pry` = `binding.pry.`
+
+### Block Builders
+
+Provided by the [ruby.vim](/files/vim/macros/ruby.vim) file.
+
++ `<L> + cls` = `class`, which also includes an `initialize` method.
++ `<L> + mod` = `module`, which also prompts for a method name.
++ `<L> + de` = `def`.
++ `<L> + di` = `def` for an `initialize` method.
++ `<L> + rsp` = `RSpec.describe`, and wraps the provided name in single quotes.
++ `<L> + rsm` = `RSpec.describe`, and does not wrap the provided name in single quotes.
++ `<L> + dsc` = `describe`.
++ `<L> + con` = `context`.
++ `<L> + it` = `it`.
++ `<L> + let` = `let`.
+
+### Frozen String Literal
+
+Both of the following insert `# frozen_string_literal: true`.
+
++ `<L> + frz`
++ `<L> + fsl`
 
 ### Navigation
 
