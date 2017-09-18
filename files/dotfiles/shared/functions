@@ -1,3 +1,29 @@
+# create a file in the lib directory and spec dir
+lib () {
+  if [[ $# -gt 0 ]]
+    then
+      mkdir -p lib
+      touch lib/$1.rb
+      mkdir -p spec/lib
+      touch spec/lib/$1_spec.rb
+      echo "** New Files **"
+      ls lib/$1.rb
+      ls spec/lib/$1_spec.rb
+    else
+      echo "Error: Missing new lib file name"
+  fi
+}
+
+spec() {
+  if [[ $# -gt 0 ]]
+    then
+  ruby -r fileutils -e "d = File.join('spec', File.dirname('$1'));FileUtils.mkdir_p d;f = File.join(d, File.basename('$1').split('.').first + '_spec.rb'); system('touch', f);puts 'New file: ' + f"
+    else
+      echo "Error: Missing new spec file name"
+  fi
+
+}
+
 # make a dir and change into it, like a sane person
 mcd () { mkdir -p $1; cd $1; }
 

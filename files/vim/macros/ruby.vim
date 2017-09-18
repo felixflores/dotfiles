@@ -11,7 +11,7 @@ function RubyDoBlock(block, name)
 endfunction
 
 function RubyBlock(block)
-  if a:block != "def-init"
+  if a:block != "def-init" && a:block != "subject"
     let name = input('Enter ' . a:block . ' name: ')
   endif
   if a:block == "class"
@@ -27,6 +27,17 @@ function RubyBlock(block)
     exe "call RubyDoBlock('RSpec.describe', \"" . name . "\")"
   elseif a:block == "rspec-model"
     exe "call RubyDoBlock('RSpec.describe', '" . name . "')"
+  elseif a:block == "rspec-file"
+    let rails_app = input('Is this a Rails app? (y/n)')
+    let name = "'". name . "'"
+    if rails_app == "y"
+      exe "normal! irequire 'rails_helper'\<cr>\<cr>"
+    else
+      exe "normal! irequire 'spec_helper'\<cr>\<cr>"
+    endif
+    exe "call RubyDoBlock('RSpec.describe', \"" . name . "\")"
+    exe "call RubyDoBlock('context', \"'context'\")"
+    exe "call RubyDoBlock('it', \"'test'\")"
   elseif a:block == "context"
     let name = "'". name . "'"
     let it_name = input('Enter a string for the first test: ')
@@ -39,6 +50,8 @@ function RubyBlock(block)
   elseif a:block == "let"
     let value = input('Enter the basic value: ')
     exe "normal! ilet(:" . name . ")\<space>{\<space>" . value . "\<space>}\<esc>=="
+  elseif a:block == "subject"
+    exe "normal! isubject\<space>{\<space>described_class\<space>}\<esc>=="
   elseif a:block == "def-init"
     exe "call RubyDefBlock('def', 'initialize')"
   else
@@ -53,10 +66,12 @@ let ruby_blocks = {
       \'di' : 'def-init',
       \'rsp': 'rspec',
       \'rsm': 'rspec-model',
+      \'frs': 'rspec-file',
       \'dsc': 'describe',
       \'it' : 'it',
       \'con': 'context',
-      \'let': 'let'
+      \'let': 'let',
+      \'sub': 'subject'
       \}
 
 for [shortcut, block_type] in items(ruby_blocks)
