@@ -107,7 +107,7 @@ vagrant_dir () {
     echo "/vagrant/code"
   else
     local home=`my_home_dir`
-    echo "$home/code"
+    echo "$home/vagrant/code"
   fi
 }
 
@@ -115,10 +115,10 @@ code () {
   local vagrant_dir=`vagrant_dir`
   if [[ $# -gt 0 ]]
   then
-    echo "Changed into vagrant/$1"
+    echo "Changed into $vagrant_dir/$1"
     cd "$vagrant_dir/$1"
   else
-    echo "Changed into vagrant"
+    echo "Changed into $vagrant_dir"
     cd "$vagrant_dir"
   fi
 }
