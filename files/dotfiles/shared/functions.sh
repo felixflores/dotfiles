@@ -104,7 +104,7 @@ vagrant_dir () {
   local user=`echo $USER`
   if [ $user = "vagrant" ]
   then
-    echo "/vagrant/code"
+    echo "vagrant/code"
   else
     local home=`my_home_dir`
     echo "$home/code"
