@@ -21,7 +21,6 @@ spec() {
     else
       echo "Error: Missing new spec file name"
   fi
-
 }
 
 # make a dir and change into it, like a sane person
@@ -84,4 +83,42 @@ tmp_stats () {
 
 deploy_to_test () {
   APP_ID=$1 bundle exec cap deploy
+}
+
+my_home_dir () {
+  local home=`echo $USER`
+  local user=`user_dir`
+  echo "/$user/$home"
+}
+
+user_dir () {
+  if [ `uname` = "Darwin" ]
+  then
+    echo "Users"
+  else
+    echo "home"
+  fi
+}
+
+vagrant_dir () {
+  local user=`echo $USER`
+  if [ $user = "vagrant" ]
+  then
+    echo "/vagrant/code"
+  else
+    local home=`my_home_dir`
+    echo "$home/code"
+  fi
+}
+
+code () {
+  local vagrant_dir=`vagrant_dir`
+  if [[ $# -gt 0 ]]
+  then
+    echo "Changed into vagrant/$1"
+    cd "/$vagrant_dir/$1"
+  else
+    echo "Changed into vagrant"
+    cd "/$vagrant_dir"
+  fi
 }
