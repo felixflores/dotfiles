@@ -1,7 +1,6 @@
 require 'fileutils'
 
 class Sheller
-
   class ShellBackupError < StandardError; end
   class ShellBackupUnmoveableError < StandardError; end
   class UnsupportedShellError < StandardError; end
