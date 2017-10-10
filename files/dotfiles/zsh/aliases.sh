@@ -25,8 +25,7 @@ alias vgi="wh vgig && wh vgin && wh vga"
 alias vt="vim ~/.tmux.conf"
 
 # gifs
-alias gifs="ruby -e \"puts `find ~/Dropbox/gifs -type f | wc -l`.to_s.strip.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse + ' gifs in ' + `find ~/Dropbox/gifs -type d | wc -l`.to_s.strip.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse + ' directories'\""
-alias gif-count="gifs"
+alias gifs="ruby -e \"puts Dir[ File.join('.', '**', '*.gif') ].reject { |p| File.directory? p }.size.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse + ' gifs in ' + Dir[ File.join('.', '**', '*') ].select { |p| File.directory? p }.size.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse + ' directories'\""
 
 # self notes
 alias vn='vim ~/Dropbox/covermymeds/self-notes-2017.md'
