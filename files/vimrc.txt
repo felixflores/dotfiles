@@ -10,7 +10,6 @@ set smartindent
 set tabstop=2
 set shiftwidth=2
 set expandtab
-set relativenumber
 set number "after relativenumber, enables current line number
 set numberwidth=5 "left-hand padding for number gutter
 set laststatus=2 "airline support
