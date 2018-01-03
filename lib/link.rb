@@ -2,12 +2,14 @@ class Link
   attr_reader :file, :link, :files, :error
 
   class LinkNotCreatedError < StandardError; end
+  class CommandNotExecutedError < StandardError; end
 
-  def initialize(file, link, optional)
+  def initialize(file, link, optional, command)
     @files = 'files'
     @file = file
     @link = link
     @optional = optional
+    @command = command
   end
 
   def link_path
@@ -42,6 +44,7 @@ class Link
   def create
     if creatable?
       symlink!
+      execute_optional_command! if command
       return true
     elsif optional?
       @error = 'skipped (optional)'
@@ -65,7 +68,23 @@ class Link
     raise e
   end
 
+  def command
+    return unless @command
+    @command.gsub 'LINK_PATH', link_path
+  end
+
+  def execute_optional_command!
+    raise CommandNotExecutedError, "Error executing \"#{command}\"" unless system command
+  rescue CommandNotExecutedError
+    remove_symlink
+    raise
+  end
+
   def home_path
     File.expand_path '~'
+  end
+
+  def remove_symlink
+    File.unlink link_path if File.symlink? link_path
   end
 end
