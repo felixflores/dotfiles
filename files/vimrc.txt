@@ -269,6 +269,11 @@ cabbrev Tabe tabnew
 nnoremap ; :
 vnoremap ; :
 
+" make life easier by remapping ; to : for commands
+nmap <leader>gb :Gblame<CR>
+vmap <leader>gb :Gblame<CR>
+imap <leader>gb :Gblame<CR>
+
 " elm support
 let g:elm_format_autosave = 1
 
