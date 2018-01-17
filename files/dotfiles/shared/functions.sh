@@ -26,19 +26,6 @@ spec() {
 # make a dir and change into it, like a sane person
 mcd () { mkdir -p $1; cd $1; }
 
-# tmux short function
-tm () {
-  if [[ $# -gt 0 ]]
-  then
-    tmux new -s $1;
-  else
-    local current_path=`pwd`
-    local current_app=`basename "$current_path"`
-    echo "Starting new tmux session for $current_app..."
-    tmux new -s $current_app
-  fi
-}
-
 # git super command
 # make sure with zsh that the git plugin is not used
 # as it will override this command
@@ -121,6 +108,26 @@ vagrant_dir () {
   fi
 }
 
+# tmux
+tm () {
+  local user=`echo $USER`
+  if [ $user = "vagrant" ]
+  then
+    echo "Error: no tmux from vagrant"
+  else
+    if [[ $# -gt 0 ]]
+    then
+      echo "[$1] Starting new tmux session"
+      tmux new -s $1;
+    else
+      local current_path=`pwd`
+      local current_app=`basename "$current_path"`
+      echo "[$current_app] Starting new tmux session"
+      tmux new -s $current_app
+    fi
+  fi
+}
+
 # this tends to exist and it just points an ls call 
 unalias a 2>/dev/null
 a () {
@@ -135,10 +142,24 @@ a () {
   fi
 }
 
+# easy tmux spinup
+atm () {
+  if [[ $# -gt 0 ]]
+  then
+    a $1
+    tm $1
+  else
+    echo "Error: no project name passed"
+  fi
+}
+
+# full list of vagrant repos
 repo_list() {
   local vagrant_dir=`vagrant_dir`
   local repos=("$vagrant_dir/$2"*)
   [[ -e ${repos[0]} ]] && COMPREPLY=( "${repos[@]##*/}" )
 }
+
 complete -F repo_list a
 complete -F repo_list tm
+complete -F repo_list atm
