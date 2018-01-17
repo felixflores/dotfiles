@@ -111,7 +111,7 @@ vagrant_dir () {
   fi
 }
 
-code () {
+app () {
   local vagrant_dir=`vagrant_dir`
   if [[ $# -gt 0 ]]
   then
@@ -122,3 +122,10 @@ code () {
     cd "$vagrant_dir"
   fi
 }
+
+repo_list() {
+  local vagrant_dir=`vagrant_dir`
+  local repos=("$vagrant_dir/$2"*)
+  [[ -e ${repos[0]} ]] && COMPREPLY=( "${repos[@]##*/}" )
+}
+complete -F repo_list app

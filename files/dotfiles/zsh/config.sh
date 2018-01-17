@@ -12,6 +12,10 @@ fi
 # thefuck plugin
 eval "$(thefuck --alias)"
 
+# enable 'complete' support for autocompletion
+autoload bashcompinit
+bashcompinit
+
 # chruby requirement
 source /usr/local/share/chruby/chruby.sh
 # chruby auto-select for ruby version
