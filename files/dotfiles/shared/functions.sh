@@ -111,6 +111,8 @@ vagrant_dir () {
   fi
 }
 
+# this tends to exist and it just points an ls call 
+unalias a 2>/dev/null
 a () {
   local vagrant_dir=`vagrant_dir`
   if [[ $# -gt 0 ]]
