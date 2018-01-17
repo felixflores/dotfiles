@@ -10,8 +10,10 @@ alias gem-defaults-extra="gem install pry pry-doc interactive_editor rake byebug
 
 ## Super Frequent
 alias s="be rspec --no-profile"
+alias sf="be rspec --fail-fast --no-profile"
 alias sd="be rspec --format documentation --no-profile"
-alias sf="be rspec --format documentation --fail-fast --no-profile"
+alias sfd="be rspec --format documentation --fail-fast --no-profile"
+alias sdf="sfd"
 alias r="be rails"
 alias rr="be rake routes"
 alias rs="be rails server -p 3000"
