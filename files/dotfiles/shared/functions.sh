@@ -111,7 +111,7 @@ vagrant_dir () {
   fi
 }
 
-ap () {
+a () {
   local vagrant_dir=`vagrant_dir`
   if [[ $# -gt 0 ]]
   then
@@ -128,4 +128,4 @@ repo_list() {
   local repos=("$vagrant_dir/$2"*)
   [[ -e ${repos[0]} ]] && COMPREPLY=( "${repos[@]##*/}" )
 }
-complete -F repo_list ap
+complete -F repo_list a
