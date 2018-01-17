@@ -27,7 +27,17 @@ spec() {
 mcd () { mkdir -p $1; cd $1; }
 
 # tmux short function
-tm () { tmux new -s $1; }
+tm () {
+  if [[ $# -gt 0 ]]
+  then
+    tmux new -s $1;
+  else
+    local current_path=`pwd`
+    local current_app=`basename "$current_path"`
+    echo "Starting new tmux session for $current_app..."
+    tmux new -s $current_app
+  fi
+}
 
 # git super command
 # make sure with zsh that the git plugin is not used
@@ -131,3 +141,4 @@ repo_list() {
   [[ -e ${repos[0]} ]] && COMPREPLY=( "${repos[@]##*/}" )
 }
 complete -F repo_list a
+complete -F repo_list tm
