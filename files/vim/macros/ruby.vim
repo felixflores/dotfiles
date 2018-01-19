@@ -11,7 +11,7 @@ function RubyDoBlock(block, name)
 endfunction
 
 function RubyBlock(block)
-  if a:block != "def-init" && a:block != "subject"
+  if a:block != "def-init" && a:block != "subject" && a:block != "file-write"
     let name = input('Enter ' . a:block . ' name: ')
   endif
   if a:block == "class"
@@ -54,24 +54,29 @@ function RubyBlock(block)
     exe "normal! isubject\<space>{\<space>described_class\<space>}\<esc>=="
   elseif a:block == "def-init"
     exe "call RubyDefBlock('def', 'initialize')"
+  elseif a:block == "file-write"
+    let file_name = input('Enter the filename to write to: ')
+    let var_name = input('Enter the variable name you want to capture: ')
+    exe "normal! iFile.open('" . file_name . "', 'w+')\<space>{\<space>|file|\<space>file.write\<space>" . var_name . "\<space>}\<esc>=="
   else
     exe "call RubyDefBlock('" . a:block . "', '" . name ."')"
   endif
 endfunction
 
 let ruby_blocks = {
-      \'cls': 'class', 
-      \'mod': 'module',
-      \'de' : 'def',
-      \'di' : 'def-init',
-      \'rsp': 'rspec',
-      \'rsm': 'rspec-model',
-      \'frs': 'rspec-file',
-      \'dsc': 'describe',
-      \'it' : 'it',
-      \'con': 'context',
-      \'let': 'let',
-      \'sub': 'subject'
+      \'cls' :  'class',
+      \'mod' :  'module',
+      \'de'  :  'def',
+      \'di'  :  'def-init',
+      \'rsp' :  'rspec',
+      \'rsm' :  'rspec-model',
+      \'frs' :  'rspec-file',
+      \'dsc' :  'describe',
+      \'it'  :  'it',
+      \'con' :  'context',
+      \'let' :  'let',
+      \'sub' :  'subject',
+      \'file':  'file-write'
       \}
 
 for [shortcut, block_type] in items(ruby_blocks)

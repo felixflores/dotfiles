@@ -113,7 +113,7 @@ tm () {
   local user=`echo $USER`
   if [ $user = "vagrant" ]
   then
-    echo "Error: no tmux from vagrant"
+    echo "[skipping vagrant tmux]"
   else
     if [[ $# -gt 0 ]]
     then
@@ -152,6 +152,7 @@ atm () {
     echo "Error: no project name passed"
   fi
 }
+alias j="atm"
 
 # full list of vagrant repos
 repo_list() {
@@ -163,3 +164,4 @@ repo_list() {
 complete -F repo_list a
 complete -F repo_list tm
 complete -F repo_list atm
+complete -F repo_list j
