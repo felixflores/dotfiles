@@ -31,6 +31,7 @@ Linking /Users/jmills/.vim: linked
 Linking /Users/jmills/.vimrc: linked
 Linking /Users/jmills/.vimrc.bundles: linked
 Linking /Users/jmills/.oh-my-zsh/themes/th78.zsh-theme: linked
+Add the following lines to /Users/jmills/.zshrc
 ------------------------------------------------------------
 source $HOME/.cache/zsh/config.sh
 source $HOME/.cache/zsh/aliases.sh
