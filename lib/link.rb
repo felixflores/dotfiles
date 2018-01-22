@@ -37,6 +37,11 @@ class Link
     File.exist? link_path
   end
 
+  def dir?
+    return if File.symlink? link_path
+    Dir.exist? link_path
+  end
+
   def remove
     File.unlink link_path
   end

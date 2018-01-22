@@ -25,7 +25,9 @@ class Linker
     links.each do |link|
       print "Checking #{link.link_path}: "
       if link.exists?
-        if link.current?
+        if link.dir?
+          print 'existing dir'
+        elsif link.current?
           print 'looks good'
         elsif link.remove
           print 'removed'
@@ -42,7 +44,9 @@ class Linker
   def create_symlinks
     links.each do |link|
       print "Linking #{link.link_path}: "
-      if link.not_current?
+      if link.dir?
+        print 'skipped'
+      elsif link.not_current?
         if link.create
           print 'linked'
         else
