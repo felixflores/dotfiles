@@ -31,7 +31,15 @@ Linking /Users/jmills/.vim: linked
 Linking /Users/jmills/.vimrc: linked
 Linking /Users/jmills/.vimrc.bundles: linked
 Linking /Users/jmills/.oh-my-zsh/themes/th78.zsh-theme: linked
-Reload your zsh shell with 'rl'
+------------------------------------------------------------
+source $HOME/.cache/zsh/config.sh
+source $HOME/.cache/zsh/aliases.sh
+source $HOME/.cache/zsh/functions.sh
+source $HOME/.cache/shared/aliases.sh
+source $HOME/.cache/shared/functions.sh
+------------------------------------------------------------
+Then reload your zsh shell with 'source /Users/jmills/.zshrc'
+Note: vim requires the :PlugInstall command to be run.
 ```
 
 ## Adding New Dotfiles
