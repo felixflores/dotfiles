@@ -76,6 +76,10 @@ noremap! <Right> <Esc>
 " Make backspace behave in a sane manner.
 set backspace=indent,eol,start
 
+" Make capital K lookup stuff in the ruby docs
+" Try it here: "asfasdfass".freeze
+set keywordprg=ri
+
 if has("autocmd")
   " Enable filetype detection
   filetype plugin indent on

@@ -1,6 +1,10 @@
 # Sizes in mb for current dir
 alias sizes="du -sm * | sort -nr | more"
 
+# Line count
+
+alias lines="wc -l *"
+
 # Bundler
 
 ## Default Gems
@@ -107,7 +111,6 @@ alias good="gpp && date"
 alias gam="git commit -am"
 alias gm="git commit -m"
 alias gc="git commit -m"
-alias gcv="git commit"
 alias gco="git checkout"
 alias gcob="git checkout -b"
 alias gcof="git checkout -f"
@@ -125,6 +128,7 @@ alias gcv="git commit -v"
 alias gmg="git merge"
 alias gwip="git add -A && git commit -m 'WIP' && git push"
 alias gri="git fetch && git rebase -i origin/master"
+alias grc="git rebase --continue"
 alias gb="git branch"
 alias gbl="git blame"
 alias gctag="ctags --tag-relative -Rf.git/tags --exclude=.git --languages=-javascript,sql"
