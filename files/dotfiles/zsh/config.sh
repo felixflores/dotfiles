@@ -9,6 +9,10 @@ if [ $? -eq 1 ]; then
   ssh-add
 fi 
 
+# vim for editing
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # thefuck plugin
 eval "$(thefuck --alias)"
 

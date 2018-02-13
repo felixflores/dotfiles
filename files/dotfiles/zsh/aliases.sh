@@ -63,6 +63,9 @@ elif [[ $platform == 'Darwin' ]]; then
   alias cv='vc'
   alias vup='cd ~/vagrant/ && vagrant up'
   alias vss='cd ~/vagrant/ && vagrant up && vagrant ssh'
+  alias vstop='cd ~/vagrant/ && vagrant halt'
+  alias vhalt='cd ~/vagrant/ && vagrant halt'
+  alias vquit='cd ~/vagrant/ && vagrant halt'
   alias vssh="echo 'Please use vss in the future' && vss"
   alias formcon="vagrant ssh -c 'cd /vagrant/code/forms-api && bundle exec rails console'"
   alias dns_cache_clear='sudo killall -HUP mDNSResponder'
