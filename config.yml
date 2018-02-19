@@ -30,6 +30,10 @@
     :link_from: pryrc.txt
     :link_to: .pryrc
   -
+    :description: SQLite configuration
+    :link_from: sqliterc.txt
+    :link_to: .sqliterc
+  -
     :description: Tmux configuration
     :link_from: tmux.conf
     :link_to: .tmux.conf
